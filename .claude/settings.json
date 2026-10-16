@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('file_path',''))\" | { read -r f; case \"$f\" in *.ts|*.tsx) cd /Users/omthorat/Portfolio && npx tsc --noEmit ;; esac; } 2>&1 || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "prompt",
+            "if": "Edit(app/data.ts)",
+            "prompt": "You are reviewing a single edit to app/data.ts, the content file for a personal portfolio site. Here is the hook input: $ARGUMENTS. Check only the text fields that were written (names, descriptions, dates, roles): does it read as natural human writing, not AI-generated marketing copy; is it free of em dashes, filler adjectives, and unexplained placeholder text (e.g. 'Lorem ipsum', 'TODO', 'add your bio here'); and does it stay factual and specific rather than vague. If you find a real issue, briefly state what and where. If the content is fine, say nothing is wrong in one short line.",
+            "continueOnBlock": true
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,120 @@
+:root {
+  --level-0: #ebedf0;
+  --level-1: #9be9a8;
+  --level-2: #40c463;
+  --level-3: #30a14e;
+  --level-4: #216e39;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --level-0: #1b1f23;
+    --level-1: #0e4429;
+    --level-2: #006d32;
+    --level-3: #26a641;
+    --level-4: #39d353;
+  }
+}
+
+:root[data-theme="dark"] {
+  --level-0: #1b1f23;
+  --level-1: #0e4429;
+  --level-2: #006d32;
+  --level-3: #26a641;
+  --level-4: #39d353;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 14px;
+}
+
+.count {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.years {
+  display: flex;
+  gap: 4px;
+}
+
+.yearButton {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.yearButton:hover {
+  border-color: currentColor;
+}
+
+.yearButtonActive {
+  composes: yearButton;
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+.scrollArea {
+  overflow-x: auto;
+  padding: 2px;
+}
+
+.calendarGrid {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-template-rows: 14px repeat(7, 10px);
+  gap: 3px;
+  align-items: start;
+}
+
+.monthLabel {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  color: var(--muted);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.day {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: var(--level-0);
+}
+
+.pad {
+  background: transparent;
+}
+
+.level1 {
+  background: var(--level-1);
+}
+
+.level2 {
+  background: var(--level-2);
+}
+
+.level3 {
+  background: var(--level-3);
+}
+
+.level4 {
+  background: var(--level-4);
+}
+
+.placeholder {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
