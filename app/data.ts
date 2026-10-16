@@ -1,4 +1,4 @@
-export const SITE_URL = "https://omthorat.dev";
+export const SITE_URL = "https://om-thorat.vercel.app";
 
 export const avatarQuote = {
   text: "As long as I live, there are infinite chances.",
