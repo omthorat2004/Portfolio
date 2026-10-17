@@ -113,14 +113,6 @@ export const projects = [
     href: "https://github.com/omthorat2004/dock",
     live: "https://dock-psi-drab.vercel.app/",
   },
-  {
-    slug: "syncspace",
-    name: "SyncSpace",
-    description:
-      "Collaborative workspace for notes, links, and code snippets. Layered FastAPI backend with role-based permissions and Redis caching.",
-    stack: ["FastAPI", "PostgreSQL", "Redis", "React"],
-    href: "https://github.com/omthorat2004/SyncSpace",
-  },
 ];
 
 export const openSource = [
