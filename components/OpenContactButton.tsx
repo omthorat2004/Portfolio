@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { openContactModal } from "./contactModalEvents";
+import { openContactModal } from "@/lib/contactModalEvents";
 
 export default function OpenContactButton({
   className,

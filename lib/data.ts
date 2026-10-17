@@ -1,9 +1,23 @@
 export const SITE_URL = "https://om-thorat.vercel.app";
 
-export const avatarQuote = {
-  text: "As long as I live, there are infinite chances.",
-  from: "Monkey D. Luffy",
-};
+export const avatarQuotes = [
+  {
+    text: "As long as I live, there are infinite chances.",
+    from: "Monkey D. Luffy",
+  },
+  {
+    text: "If you don't take risks, you can't create a future!",
+    from: "Monkey D. Luffy",
+  },
+  {
+    text: "I'm gonna be the Pirate King!",
+    from: "Monkey D. Luffy",
+  },
+  {
+    text: "Power isn't determined by your size, but the size of your heart and dreams!",
+    from: "Monkey D. Luffy",
+  },
+];
 
 export const profile = {
   name: "Om Thorat",
@@ -17,7 +31,7 @@ export const profile = {
     { label: "LinkedIn", href: "https://linkedin.com/in/omthoratcse" },
     { label: "LeetCode", href: "https://leetcode.com/u/mugiwara12345" },
     { label: "Codeforces", href: "https://codeforces.com/profile/RyujinOm" },
-    { label: "Blog", href: "/blog" },
+    { label: "Blogs", href: "/blog" },
   ],
 };
 
@@ -44,12 +58,6 @@ export const experience = [
     org: "RSquareSoft Technologies",
     period: "Jan 2026 to Jun 2026",
     location: "Pimpri Chinchwad, Maharashtra · On-site",
-  },
-  {
-    role: "Back End Developer",
-    org: "Leafny Web Pack Services and Consultancy",
-    period: "Sep 2025 to Oct 2025",
-    location: "Remote",
   },
 ];
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./CopyEmailButton.module.css";
 
 export default function CopyEmailButton({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
@@ -19,7 +18,7 @@ export default function CopyEmailButton({ email }: { email: string }) {
   return (
     <button
       type="button"
-      className={styles.copy}
+      className="inline-flex items-center gap-1 font-sans text-[0.875rem] font-medium text-muted bg-transparent border-none p-0 cursor-pointer hover:text-fg [&_svg]:w-[13px] [&_svg]:h-[13px] [&_svg]:transition-transform [&_svg]:duration-150 [&_svg]:ease-in-out hover:[&_svg]:scale-[1.15]"
       onClick={copy}
       aria-label={`Copy email address ${email}`}
     >

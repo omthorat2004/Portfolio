@@ -54,7 +54,18 @@ const brandColors: Record<string, string> = {
   sqlite: "#003B57",
 };
 
-export function TechIcon({ label, className }: { label: string; className?: string }) {
+export function TechIcon({
+  label,
+  className,
+  vivid,
+  size = 13,
+}: {
+  label: string;
+  className?: string;
+  /** Skip the grayscale-until-hover treatment used for stack tags (e.g. for a standalone badge). */
+  vivid?: boolean;
+  size?: number;
+}) {
   const slug = techIconSlugs[label];
   const d = slug ? paths[slug] : undefined;
   if (!d) return null;
@@ -63,13 +74,22 @@ export function TechIcon({ label, className }: { label: string; className?: stri
     <svg
       className={className}
       viewBox="0 0 24 24"
-      width="13"
-      height="13"
+      width={size}
+      height={size}
       fill={color ?? "currentColor"}
       aria-hidden="true"
-      style={color ? { filter: "grayscale(1)", transition: "filter 0.2s ease, transform 0.2s ease" } : undefined}
+      style={
+        color && !vivid
+          ? { filter: "grayscale(1)", transition: "filter 0.2s ease, transform 0.2s ease" }
+          : undefined
+      }
     >
       <path d={d} />
     </svg>
   );
+}
+
+export function techBrandColor(label: string): string | undefined {
+  const slug = techIconSlugs[label];
+  return slug ? brandColors[slug] : undefined;
 }

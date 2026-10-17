@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./Visitors.module.css";
 
-const NAMESPACE = "om-thorat-portfolio-v1";
+const NAMESPACE = "om-thorat-portfolio-v2";
 const VISITED_KEY = "ot_visited";
 
 async function hit(key: string): Promise<number | null> {
@@ -57,7 +56,7 @@ export default function Visitors() {
   if (views === null && uniqueVisitors === null) return null;
 
   return (
-    <p className={styles.visitors}>
+    <p className="mt-4 flex flex-wrap gap-x-[18px] gap-y-1 font-sans text-[0.8125rem] text-muted">
       {views !== null ? `${views.toLocaleString()} views` : null}
       {views !== null && uniqueVisitors !== null ? " · " : null}
       {uniqueVisitors !== null ? `${uniqueVisitors.toLocaleString()} visitors` : null}

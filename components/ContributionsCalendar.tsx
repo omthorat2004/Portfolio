@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import styles from "./ContributionsCalendar.module.css";
 
 type Day = { date: string; count: number; level: number };
 type ApiResponse = { total: Record<string, number>; contributions: Day[] };
@@ -20,6 +19,21 @@ const MONTHS = [
   "Nov",
   "Dec",
 ];
+
+const LEVEL_BG = [
+  "bg-[var(--level-0)]",
+  "bg-[var(--level-1)]",
+  "bg-[var(--level-2)]",
+  "bg-[var(--level-3)]",
+  "bg-[var(--level-4)]",
+];
+
+function formatDay(isoDate: string) {
+  const [year, month, day] = isoDate.split("-").map(Number);
+  return `${MONTHS[month - 1]} ${day}, ${year}`;
+}
+
+const placeholderClass = "font-sans text-[0.8125rem] text-muted";
 
 export default function ContributionsCalendar({ username }: { username: string }) {
   const [data, setData] = useState<ApiResponse | null>(null);
@@ -80,7 +94,7 @@ export default function ContributionsCalendar({ username }: { username: string }
 
   if (failed) {
     return (
-      <p className={styles.placeholder}>
+      <p className={placeholderClass}>
         Could not load contribution data from{" "}
         <a href={`https://github.com/${username}`} target="_blank" rel="noreferrer">
           GitHub
@@ -91,7 +105,7 @@ export default function ContributionsCalendar({ username }: { username: string }
   }
 
   if (!data || !year || !cells) {
-    return <p className={styles.placeholder}>Loading contributions...</p>;
+    return <p className={placeholderClass}>Loading contributions...</p>;
   }
 
   const years = Object.keys(data.total).sort();
@@ -99,16 +113,18 @@ export default function ContributionsCalendar({ username }: { username: string }
 
   return (
     <div>
-      <div className={styles.head}>
-        <p className={styles.count}>
+      <div className="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-2 mb-3.5">
+        <p className="font-sans text-[0.8125rem] text-muted">
           {count} contribution{count === 1 ? "" : "s"} in {year}
         </p>
-        <div className={styles.years} role="group" aria-label="Select year">
+        <div className="flex gap-1" role="group" aria-label="Select year">
           {years.map((y) => (
             <button
               key={y}
               type="button"
-              className={y === year ? styles.yearButtonActive : styles.yearButton}
+              className={`font-sans text-[0.75rem] font-medium px-[9px] py-[3px] border bg-transparent cursor-pointer hover:border-current ${
+                y === year ? "text-fg border-fg" : "text-muted border-border"
+              }`}
               onClick={() => setYear(y)}
             >
               {y}
@@ -116,26 +132,30 @@ export default function ContributionsCalendar({ username }: { username: string }
           ))}
         </div>
       </div>
-      <div className={styles.scrollArea}>
-        <div className={styles.calendarGrid}>
+      <div className="overflow-x-auto p-0.5">
+        <div className="inline-grid grid-flow-col [grid-template-rows:14px_repeat(7,10px)] gap-[3px] items-start">
           {cells.map((item) => {
             if (item.type === "label") {
               return (
-                <span key={item.key} className={styles.monthLabel}>
+                <span
+                  key={item.key}
+                  className="font-sans text-[0.6875rem] text-muted whitespace-nowrap leading-none"
+                >
                   {item.label}
                 </span>
               );
             }
             if (item.type === "pad") {
-              return <span key={item.key} className={`${styles.day} ${styles.pad}`} />;
+              return <span key={item.key} className="block w-[10px] h-[10px] bg-transparent" />;
             }
             const day = item.day!;
             return (
-              <span
-                key={item.key}
-                className={`${styles.day} ${styles[`level${day.level}` as keyof typeof styles] ?? ""}`}
-                title={`${day.date}: ${day.count} contribution${day.count === 1 ? "" : "s"}`}
-              />
+              <span key={item.key} className="group relative">
+                <span className={`block w-[10px] h-[10px] ${LEVEL_BG[day.level] ?? LEVEL_BG[0]}`} />
+                <span className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-1 -translate-x-1/2 whitespace-nowrap bg-fg px-1.5 py-1 font-sans text-[0.625rem] leading-none text-surface opacity-0 transition-opacity duration-100 ease-in-out group-hover:opacity-100">
+                  {day.count} contribution{day.count === 1 ? "" : "s"} on {formatDay(day.date)}
+                </span>
+              </span>
             );
           })}
         </div>

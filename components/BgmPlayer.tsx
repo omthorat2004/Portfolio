@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import toggleStyles from "./ThemeToggle.module.css";
-import styles from "./BgmPlayer.module.css";
 
 const TRACKS = [
   { name: "Heroic", src: "/bgm/heroic.mp3" },
@@ -63,15 +61,15 @@ export default function BgmPlayer() {
   };
 
   return (
-    <div className={styles.wrap} ref={wrapRef}>
+    <div className="relative" ref={wrapRef}>
       <audio ref={audioRef} src={TRACKS[0].src} loop preload="none" />
       <button
         type="button"
-        className={`${toggleStyles.toggle} ${playing ? toggleStyles.playing : ""}`}
+        className={`toggle-btn flex items-center justify-center w-8 h-8 border border-border bg-surface text-fg cursor-pointer transition-[border-color,transform] duration-150 ease-in-out hover:border-current hover:-translate-y-px active:translate-y-0 active:scale-[0.92] [&_svg]:w-[15px] [&_svg]:h-[15px] ${playing ? "toggle-playing" : ""}`}
         onClick={() => setOpen((o) => !o)}
         aria-label="Background music options"
       >
-        <span className={toggleStyles.iconSpin} key={String(playing)}>
+        <span className="icon-spin-in flex" key={String(playing)}>
           {playing ? (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
               <path strokeLinejoin="round" d="M4 9v6h4l5 4V5L8 9H4Z" />
@@ -87,27 +85,39 @@ export default function BgmPlayer() {
       </button>
 
       {open ? (
-        <div className={styles.panel}>
-          <p className={styles.sectionLabel}>Track</p>
-          <div className={styles.tracks}>
+        <div className="absolute top-11 right-0 z-10 w-[220px] p-4 bg-surface border border-border rounded-[10px] shadow-[0_16px_40px_var(--shadow-2)] font-sans">
+          <p className="text-[0.6875rem] font-semibold tracking-[0.04em] text-muted mb-2">Track</p>
+          <div className="flex flex-col gap-1 mb-4">
             {TRACKS.map((track, index) => (
               <button
                 key={track.name}
                 type="button"
-                className={`${styles.trackButton} ${index === trackIndex ? styles.trackActive : ""}`}
+                className={`flex items-center gap-2 w-full text-left px-[10px] py-[9px] rounded-[6px] text-[0.875rem] cursor-pointer transition-colors duration-150 ease-in-out group ${
+                  index === trackIndex
+                    ? "text-surface bg-fg font-semibold hover:text-surface hover:bg-fg"
+                    : "text-muted hover:text-fg hover:bg-surface-alt"
+                }`}
                 onClick={() => {
                   selectTrack(index);
                   if (!playing) play();
                 }}
               >
-                <span className={styles.dot} />
+                <span
+                  className={`flex-none w-1.5 h-1.5 rounded-full bg-current ${
+                    index === trackIndex ? "opacity-100" : "opacity-35"
+                  }`}
+                />
                 {track.name}
               </button>
             ))}
           </div>
 
-          <div className={styles.playRow}>
-            <button type="button" className={styles.playButton} onClick={togglePlay}>
+          <div className="flex items-center gap-2 py-[10px] px-0.5 border-t border-b border-border mb-3.5">
+            <button
+              type="button"
+              className="flex items-center gap-[7px] text-[0.875rem] font-semibold text-fg bg-transparent border-none cursor-pointer [&_svg]:w-4 [&_svg]:h-4"
+              onClick={togglePlay}
+            >
               {playing ? (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <path strokeLinecap="round" d="M8 5v14M16 5v14" />
@@ -121,8 +131,14 @@ export default function BgmPlayer() {
             </button>
           </div>
 
-          <div className={styles.volumeRow}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <div className="flex items-center gap-2.5">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              className="w-[15px] h-[15px] text-muted flex-none"
+            >
               <path strokeLinejoin="round" d="M4 9v6h4l5 4V5L8 9H4Z" />
               <path strokeLinecap="round" d="M16.5 8.5a5 5 0 0 1 0 7" />
             </svg>
@@ -134,6 +150,7 @@ export default function BgmPlayer() {
               value={volume}
               onChange={(e) => setVolume(Number(e.target.value))}
               aria-label="Volume"
+              className="flex-1 accent-fg h-[18px]"
             />
           </div>
         </div>

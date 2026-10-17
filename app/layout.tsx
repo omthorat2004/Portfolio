@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Source_Serif_4, IBM_Plex_Sans } from "next/font/google";
 import Script from "next/script";
-import { SITE_URL } from "./data";
+import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL } from "@/lib/data";
+import CommandPalette from "@/components/CommandPalette";
+import ContextMenu from "@/components/ContextMenu";
+import ClickSound from "@/components/ClickSound";
 import "./globals.css";
 
 const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();`;
@@ -37,7 +41,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         {children}
+        <CommandPalette />
+        <ContextMenu />
+        <ClickSound />
         <Script src="/oneko.js" data-cat="/oneko.gif" strategy="afterInteractive" />
+        <Analytics />
       </body>
     </html>
   );

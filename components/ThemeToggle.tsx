@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./ThemeToggle.module.css";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
@@ -29,11 +28,11 @@ export default function ThemeToggle() {
   return (
     <button
       type="button"
-      className={styles.toggle}
+      className="toggle-btn flex items-center justify-center w-8 h-8 border border-border bg-surface text-fg cursor-pointer transition-[border-color,transform] duration-150 ease-in-out hover:border-current hover:-translate-y-px active:translate-y-0 active:scale-[0.92] [&_svg]:w-[15px] [&_svg]:h-[15px]"
       onClick={toggle}
       aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
     >
-      <span className={styles.iconSpin} key={theme}>
+      <span className="icon-spin-in flex" key={theme}>
         {theme === "dark" ? (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
             <circle cx="12" cy="12" r="4.2" />
