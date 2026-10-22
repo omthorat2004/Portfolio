@@ -136,13 +136,6 @@ type WinterArcEntry =
 
 export const winterArc2026: WinterArcEntry[] = [
   {
-    title: "Winter Arc 2026 log page",
-    type: "skill",
-    date: "Oct 22",
-    description:
-      "Added this running log to the portfolio itself: a dedicated page and filterable list component to track projects, reads, and skills picked up through the winter.",
-  },
-  {
     title: "Networking fundamentals",
     type: "read",
     date: "Oct 22",
