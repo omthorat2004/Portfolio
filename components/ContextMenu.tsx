@@ -17,6 +17,7 @@ export default function ContextMenu() {
     const onContextMenu = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (EDITABLE_TAGS.has(target.tagName) || target.isContentEditable) return;
+      if (e.shiftKey) return; // let the native browser menu (Inspect) through
 
       e.preventDefault();
       const menuWidth = 232;
@@ -99,6 +100,10 @@ export default function ContextMenu() {
         window.open(`view-source:${window.location.href}`, "_blank", "noopener,noreferrer");
         setState(null);
       },
+    },
+    {
+      label: "Inspect (hold Shift + right-click)",
+      onClick: () => setState(null),
     },
     ...(typeof document !== "undefined" && document.fullscreenElement
       ? [

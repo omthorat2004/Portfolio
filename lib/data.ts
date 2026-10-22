@@ -115,6 +115,49 @@ export const projects = [
   },
 ];
 
+type WinterArcEntry =
+  | {
+      title: string;
+      type: "project";
+      status?: string;
+      date?: string; // e.g. "Oct 22"
+      description: string;
+      href: string; // GitHub repo, mandatory
+      live?: string; // deployed link, optional
+    }
+  | {
+      title: string;
+      type: "blog" | "skill" | "read";
+      status?: string;
+      date?: string; // e.g. "Oct 22"
+      description: string;
+      href?: string;
+    };
+
+export const winterArc2026: WinterArcEntry[] = [
+  {
+    title: "Winter Arc 2026 log page",
+    type: "skill",
+    date: "Oct 22",
+    description:
+      "Added this running log to the portfolio itself: a dedicated page and filterable list component to track projects, reads, and skills picked up through the winter.",
+  },
+  {
+    title: "Networking fundamentals",
+    type: "read",
+    date: "Oct 22",
+    description:
+      "Read through core networking concepts: how requests travel across the stack, client-server communication, and the basics underpinning everything built on top of HTTP.",
+  },
+  {
+    title: "How JavaScript actually executes",
+    type: "read",
+    date: "Oct 22",
+    description:
+      "Went deeper on JavaScript internals: classes under the hood, how Promises resolve, and the call stack, event loop, and task queue that decide the order code actually runs in.",
+  },
+];
+
 export const openSource = [
   {
     project: "OpenTelemetry Ecosystem Explorer",

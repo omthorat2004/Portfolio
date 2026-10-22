@@ -1,5 +1,14 @@
 import Link from "next/link";
-import { profile, avatarQuotes, stack, experience, education, projects, openSource, SITE_URL } from "@/lib/data";
+import {
+  profile,
+  avatarQuotes,
+  stack,
+  experience,
+  education,
+  projects,
+  openSource,
+  SITE_URL,
+} from "@/lib/data";
 import { TechIcon } from "@/components/techIcons";
 import ContributionsCalendar from "@/components/ContributionsCalendar";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -165,6 +174,18 @@ export default function Home() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="winter-arc-2026" className={sectionBase}>
+        <h2 className={heading}>Winter Arc 2026</h2>
+        <p className={`${itemBody} max-w-[56ch]`}>
+          A running log of everything I build, write, and learn this winter: one good project
+          after another, plus the blogs and skills picked up along the way.{" "}
+          <Link href="/winter-arc-2026" className="underline decoration-border hover:decoration-current">
+            Follow the log
+          </Link>
+          .
+        </p>
       </section>
 
       <section id="open-source" className={sectionBase}>
