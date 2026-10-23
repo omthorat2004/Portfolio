@@ -149,6 +149,13 @@ export const winterArc2026: WinterArcEntry[] = [
     description:
       "Went deeper on JavaScript internals: classes under the hood, how Promises resolve, and the call stack, event loop, and task queue that decide the order code actually runs in.",
   },
+  {
+    title: "Prompt engineering basics",
+    type: "read",
+    date: "Oct 23",
+    description:
+      "Covered the fundamentals of working with LLMs: tokens, context windows, and how conversation history shapes a model's responses, then read Anthropic's prompting best practices guide for Claude.",
+  },
 ];
 
 export const openSource = [
