@@ -156,6 +156,29 @@ export const winterArc2026: WinterArcEntry[] = [
     description:
       "Covered the fundamentals of working with LLMs: tokens, context windows, and how conversation history shapes a model's responses, then read Anthropic's prompting best practices guide for Claude.",
   },
+  {
+    title: "Node.js fundamentals",
+    type: "read",
+    date: "Oct 26",
+    description:
+      "Read through Node's runtime and module system: how the environment differs from the browser, CommonJS vs. ES6 modules, and where Express fits in as a routing and middleware layer on top of Node's bare HTTP module rather than a separate runtime.",
+  },
+  {
+    title: "Milo",
+    type: "project",
+    status: "building",
+    date: "Oct 26",
+    description: "Continued building out Milo's resume analytics flow.",
+    href: "https://github.com/omthorat2004/Milo",
+    live: "https://milo-nu-two.vercel.app/",
+  },
+  {
+    title: "Qalam",
+    type: "skill",
+    date: "Oct 26",
+    description:
+      "Continued building Qalam (private repo for now).",
+  },
 ];
 
 export const openSource = [
