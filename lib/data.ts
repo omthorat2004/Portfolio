@@ -179,6 +179,33 @@ export const winterArc2026: WinterArcEntry[] = [
     description:
       "Continued building Qalam (private repo for now).",
   },
+  {
+    title: "Milo",
+    type: "project",
+    status: "building",
+    date: "Oct 27",
+    description:
+      "Shipped device/browser/OS breakdowns, an activity trend chart, and a top-links view in the analytics dashboard.",
+    href: "https://github.com/omthorat2004/Milo",
+    live: "https://milo-nu-two.vercel.app/",
+  },
+  {
+    title: "Milo",
+    type: "project",
+    status: "building",
+    date: "Oct 28",
+    description:
+      "Added a resume download button and a device-aware viewer, then hardened the link redirect backend: re-checked redirect targets for SSRF, guarded fetched content types, and fixed a verification upsert race.",
+    href: "https://github.com/omthorat2004/Milo",
+    live: "https://milo-nu-two.vercel.app/",
+  },
+  {
+    title: "Qalam",
+    type: "skill",
+    date: "Oct 28",
+    description:
+      "Built out an about page and wired it into navigation and the sitemap, plus added skills covering backend engineering, backend security, and the poem editor/SEO workflow (private repo for now).",
+  },
 ];
 
 export const openSource = [
