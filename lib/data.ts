@@ -206,6 +206,33 @@ export const winterArc2026: WinterArcEntry[] = [
     description:
       "Built out an about page and wired it into navigation and the sitemap, plus added skills covering backend engineering, backend security, and the poem editor/SEO workflow (private repo for now).",
   },
+  {
+    title: "Milo",
+    type: "project",
+    status: "building",
+    date: "Oct 30",
+    description:
+      "Replaced the resume viewer's native browser PDF rendering with a pdf.js canvas renderer, closing a gap where downloads and per-page dwell time went untracked, then required resume URLs to serve real PDF bytes rather than trusting a declared content type, closing a stored-XSS path.",
+    href: "https://github.com/omthorat2004/Milo",
+    live: "https://milo-nu-two.vercel.app/",
+  },
+  {
+    title: "Milo",
+    type: "project",
+    status: "building",
+    date: "Oct 31",
+    description:
+      "Shipped forgot/reset password, reusing the registration flow's OTP mechanics in their own collection so a pending verification and a pending reset never collide, plus a show/hide toggle on every password field and a dev database reset script.",
+    href: "https://github.com/omthorat2004/Milo",
+    live: "https://milo-nu-two.vercel.app/",
+  },
+  {
+    title: "Next.js App Router internals",
+    type: "read",
+    date: "Nov 1",
+    description:
+      "Read into the App Router's rendering model: server vs. client components, the file-based layout and route-segment convention, and how data fetching and caching behave across the request lifecycle.",
+  },
 ];
 
 export const openSource = [
