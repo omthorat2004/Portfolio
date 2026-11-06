@@ -101,8 +101,8 @@ export const projects = [
       "Privacy-conscious resume analytics. Share a link instead of the file and see views, downloads, and time per page. Never who read it.",
     stack: ["Next.js", "Three.js", "FastAPI", "MongoDB"],
     href: "https://github.com/omthorat2004/Milo",
-    live: "https://milo-nu-two.vercel.app/",
-    status: "building",
+    live: "https://milo-frontend-lake.vercel.app/",
+    status: "completed",
   },
   {
     slug: "dock",
@@ -170,7 +170,7 @@ export const winterArc2026: WinterArcEntry[] = [
     date: "Oct 26",
     description: "Continued building out Milo's resume analytics flow.",
     href: "https://github.com/omthorat2004/Milo",
-    live: "https://milo-nu-two.vercel.app/",
+    live: "https://milo-frontend-lake.vercel.app/",
   },
   {
     title: "Qalam",
@@ -187,7 +187,7 @@ export const winterArc2026: WinterArcEntry[] = [
     description:
       "Shipped device/browser/OS breakdowns, an activity trend chart, and a top-links view in the analytics dashboard.",
     href: "https://github.com/omthorat2004/Milo",
-    live: "https://milo-nu-two.vercel.app/",
+    live: "https://milo-frontend-lake.vercel.app/",
   },
   {
     title: "Milo",
@@ -197,7 +197,7 @@ export const winterArc2026: WinterArcEntry[] = [
     description:
       "Added a resume download button and a device-aware viewer, then hardened the link redirect backend: re-checked redirect targets for SSRF, guarded fetched content types, and fixed a verification upsert race.",
     href: "https://github.com/omthorat2004/Milo",
-    live: "https://milo-nu-two.vercel.app/",
+    live: "https://milo-frontend-lake.vercel.app/",
   },
   {
     title: "Qalam",
@@ -214,7 +214,7 @@ export const winterArc2026: WinterArcEntry[] = [
     description:
       "Replaced the resume viewer's native browser PDF rendering with a pdf.js canvas renderer, closing a gap where downloads and per-page dwell time went untracked, then required resume URLs to serve real PDF bytes rather than trusting a declared content type, closing a stored-XSS path.",
     href: "https://github.com/omthorat2004/Milo",
-    live: "https://milo-nu-two.vercel.app/",
+    live: "https://milo-frontend-lake.vercel.app/",
   },
   {
     title: "Milo",
@@ -224,7 +224,7 @@ export const winterArc2026: WinterArcEntry[] = [
     description:
       "Shipped forgot/reset password, reusing the registration flow's OTP mechanics in their own collection so a pending verification and a pending reset never collide, plus a show/hide toggle on every password field and a dev database reset script.",
     href: "https://github.com/omthorat2004/Milo",
-    live: "https://milo-nu-two.vercel.app/",
+    live: "https://milo-frontend-lake.vercel.app/",
   },
   {
     title: "Next.js App Router internals",
@@ -232,6 +232,68 @@ export const winterArc2026: WinterArcEntry[] = [
     date: "Nov 1",
     description:
       "Read into the App Router's rendering model: server vs. client components, the file-based layout and route-segment convention, and how data fetching and caching behave across the request lifecycle.",
+  },
+  {
+    title: "Kai",
+    type: "project",
+    date: "Nov 3",
+    description:
+      "Added a sidebar search box for finding a saved app by name, command, or group.",
+    href: "https://github.com/omthorat2004/Kai",
+    live: "https://omthorat2004.github.io/Kai/",
+  },
+  {
+    title: "SMTP fundamentals",
+    type: "read",
+    date: "Nov 3",
+    description:
+      "Went deep on SMTP: the handshake between mail servers, envelope vs. header addresses, and why a verified sending domain (SPF, DKIM, DMARC) decides whether mail lands in an inbox at all.",
+  },
+  {
+    title: "Milo",
+    type: "project",
+    status: "building",
+    date: "Nov 4",
+    description:
+      "Shipped an account page with an SMTP-verified change-password flow, moved the authenticated dashboard to slug-based link URLs matching the public share link, added pagination to the links table and activity logs, and fixed a Strict Mode double-fetch that was double-counting views.",
+    href: "https://github.com/omthorat2004/Milo",
+    live: "https://milo-frontend-lake.vercel.app/",
+  },
+  {
+    title: "Creating launch videos",
+    type: "read",
+    date: "Nov 4",
+    description:
+      "Learned the basics of putting together a product launch video: scripting a short demo around one core flow, a screen-capture and editing workflow, and pacing it for a landing page rather than a tutorial.",
+  },
+  {
+    title: "Milo",
+    type: "project",
+    status: "building",
+    date: "Nov 5",
+    description:
+      "Added a backend health-check endpoint, replaced Celery with inline email delivery to simplify the deploy, and made dashboard breakdowns count unique views with campaign tracking.",
+    href: "https://github.com/omthorat2004/Milo",
+    live: "https://milo-frontend-lake.vercel.app/",
+  },
+  {
+    title: "Milo",
+    type: "project",
+    status: "completed",
+    date: "Nov 6",
+    description:
+      "Wrapped up Milo: the viewer now shares one anonymous ID across tabs and loads the pdf.js legacy build so older Safari can open resumes, each later PDF page records its own event, fixed the timing bugs so event times and \"ago\" labels are measured against server time, and polished the UI with a header skeleton, a larger logo, and renamed nav sections.",
+    href: "https://github.com/omthorat2004/Milo",
+    live: "https://milo-frontend-lake.vercel.app/",
+  },
+  {
+    title: "Portfolio",
+    type: "project",
+    date: "Nov 6",
+    description:
+      "Replaced the hardcoded 0 views / 0 visitors footer with a real counter: a route handler records views and unique visitors (hashed IPs, never raw) in Upstash Redis, counting once per browser session.",
+    href: "https://github.com/omthorat2004/Portfolio",
+    live: "https://om-thorat.vercel.app",
   },
 ];
 
